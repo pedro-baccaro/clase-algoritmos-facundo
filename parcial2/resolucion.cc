@@ -30,10 +30,13 @@ void tests();
 
 int main(){
     tests();
+    
     int curso[60][7]; //Asumimos que ya tiene las notas cargadas
     //Ademas asumimos que las filas del curso, que representan a cada alumno, se encuentran ordenadas segun el legajo del alumno
+    
     Alumno* alumnos = new Alumno[60]; //Este sería el vector paralelo, asumimos que está cargado (y ordenado por legajo)
     //Además asumimos que luego del ultimo alumno, el resto tienen como legajo -1, para indicar que no hay mas alumnos
+
     hacerInforme(curso, alumnos, contarAlumnos(alumnos, 60)); //Ya contamos la cantidad de alumnos que hay
     return 0;
 }
@@ -124,11 +127,11 @@ void hacerInforme(int curso[60][7], Alumno alumnosPorLegajo[], int cantidadAlumn
     //Creamos una copia del vector (ordenada por apellido)
     Alumno* alumnosPorApellido = ordenarAlumnosPorApellido(alumnosPorLegajo, cantidadAlumnos);
     //Empezamos la impresion del informe
-    cout << "Orden\tApellido\t\tSituacion Academica" << endl; 
+    cout << "Orden\tApellido\tSituacion Academica" << endl; 
     //En el orden dado por los apellidos, mostramos el informe de cada alumno
     for (int i = 0; i < cantidadAlumnos; i++){
         //Mostramos el Orden, y apellido. La situacion academica es mas complicada
-        cout << i+1 << "\t" << apellido(alumnosPorApellido[i].nombre) << "\t\t";
+        cout << i+1 << "\t" << apellido(alumnosPorApellido[i].nombre) << "\t";
         //Obtenemos las notas del alumno (para lo cual necesitamos saber su posicion en el vector ordenado por legajo)
         Notas notas = buscarNotas(curso, posicionPorLegajo(alumnosPorApellido[i], alumnosPorLegajo, cantidadAlumnos));
         char* situactionAcademica = obtenerSituacionAcademica(notas);
@@ -183,7 +186,7 @@ void tests(){
             curso[i][j] = rand() % 11;
         }
         cout << "Apellido: " << apellido(alumnosPorLegajo[i].nombre) << endl;
-        cout << "Notas: " << curso[i][0] << " " << curso[i][1] << " " << curso[i][2] << " " << curso[i][3] << " " << curso[i][4] << " " << curso[i][5] << " " << curso[i][6] << endl;
+        cout << "Notas: " << curso[i][0] << " " << curso[i][1] << " " << curso[i][2] << " " << curso[i][3] << " " << curso[i][4] << " " << curso[i][5] << " " << curso[i][6] << endl << endl;
     }
 
     hacerInforme(curso, alumnosPorLegajo, contarAlumnos(alumnosPorLegajo, 60));
