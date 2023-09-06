@@ -188,3 +188,9 @@ void tests(){
 
     hacerInforme(curso, alumnosPorLegajo, contarAlumnos(alumnosPorLegajo, 60));
 }
+
+
+/*
+Punto extra:
+La funcion devuelve la suma de todos los enteros en el arreglo, en main se declara el arreglo y se muestra por pantalla la suma
+*/
